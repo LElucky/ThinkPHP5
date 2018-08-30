@@ -41,6 +41,7 @@ Route::group('a',[
 //用户管理模块
 Route::group('u',[
 		'index'		 => ['admin/user/index'      ,  ['method' => 'get' ]],
+		'addUser'	 => ['admin/user/addUser'	 ,  ['method' => 'get' ]],
 ]);
 
 

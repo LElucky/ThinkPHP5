@@ -7,6 +7,11 @@ class UserController extends BaseController
 	{
 		return $this->fetch();
 	}
+
+	public function addUser()
+	{
+		return $this->fetch();
+	}
 }
 
 
