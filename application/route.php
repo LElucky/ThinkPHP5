@@ -29,6 +29,7 @@ Route::rule('login_admin','admin/login/login');
 //内容管理模块
 Route::group('a',[
 		'index'      => ['admin/admin/index'     ,  ['method' => 'get' ]],
+		'main'		 => ['admin/admin/main'		 ,  ['method' => 'get' ]],
 		'news'		 => ['admin/news/index'		 ,  ['method' => 'get' ]],
 		'newsAdd' 	 => ['admin/news/newsAdd' 	 ,  ['method' => 'get' ]],
 		'image'		 => ['admin/image/index' 	 ,  ['method' => 'get' ]],

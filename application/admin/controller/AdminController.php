@@ -7,6 +7,11 @@ class AdminController extends BaseController
 	{
 		return $this->fetch();
 	}
+
+	public function main()
+	{
+		return $this->fetch();
+	}
 }
 
 ?>
