@@ -26,6 +26,9 @@ use think\Route;
 //后台管理模块登录
 Route::rule('login_admin','admin/login/login');
 
+Route::Group('l',[
+	'login_validate' => ['admin/login/loginValidate' , ['method'=>'post']]
+]);
 //内容管理模块
 Route::group('a',[
 		'index'      => ['admin/admin/index'     ,  ['method' => 'get' ]],
@@ -34,6 +37,8 @@ Route::group('a',[
 		'newsAdd' 	 => ['admin/news/newsAdd' 	 ,  ['method' => 'get' ]],
 		'image'		 => ['admin/image/index' 	 ,  ['method' => 'get' ]],
 		'error'		 => ['admin/error/index'	 ,  ['method' => 'get' ]],
+		'navList'	 => ['admin/admin/navList'	 ,  ['method' => 'get' ]],
+		'getParam'	 => ['admin/admin/getParam'	 ,  ['method' => 'get' ]],
 ]);
 
 
@@ -41,9 +46,40 @@ Route::group('a',[
 //用户管理模块
 Route::group('u',[
 		'index'		 => ['admin/user/index'      ,  ['method' => 'get' ]],
+		'indexinfo'  => ['admin/user/indexinfo'  ,  ['method' => 'get' ]],
 		'addUser'	 => ['admin/user/addUser'	 ,  ['method' => 'get' ]],
+		'addSave'	 => ['admin/user/userSave'	 ,  ['method' => 'post']],
+        'delete'     => ['admin/user/delete'     ,  ['method' => 'get' ]   , ['id'=>'\d+']],
+        'ajaxStatus' => ['admin/user/ajaxStatus' ,  ['method' => 'post']],
 ]);
 
+
+// 权限系统	rule
+Route::group('auth',[
+		'authRule'	 	=> ['admin/authconfig/authRule' 	, ['method' => 'get' ]],
+		'authRuleAdd'	=> ['admin/authconfig/authRuleAdd'  , ['method' => 'get' ]],
+		'authRuleInfo'  => ['admin/authconfig/authRuleInfo' , ['method' => 'get' ]],
+		'ajaxStatus' 	=> ['admin/authconfig/ajaxStatus'   , ['method' => 'post']],
+		'addSave'		=> ['admin/authconfig/addSave'	  	, ['method'	=> 'post']],
+        'delete'        => ['admin/authconfig/delete'       , ['method' => 'get' ]   , ['id'=>'\d+']],
+        'sortEdit'		=> ['admin/authconfig/sortEdit'     , ['method' => 'post']],
+]);
+
+Route::group('authg',[
+		'authGroup'   		=> ['admin/authgroup/authGroup'			, ['method' => 'get' ]],
+        'authGroupAdd' 	 	=> ['admin/authgroup/authGroupAdd'  	, ['method' => 'get' ]],
+        'authGroupSave' 	=> ['admin/authgroup/authGroupSave' 	, ['method' => 'post']],
+        'authlist'      	=> ['admin/authgroup/authList'      	, ['method' => 'get' ]],
+        'ajaxStatus'		=> ['admin/authgroup/ajaxStatus'		, ['method' => 'post']],
+        'delete'       		=> ['admin/authgroup/delete'        	, ['method' => 'get' ]   , ['id'=>'\d+']],
+        'authGroupRule' 	=> ['admin/authgroup/authGroupRule' 	, ['method' => 'get' ]],
+        'authjGroupRuleSave'=> ['admin/authgroup/authjGroupRuleSave', ['method' => 'post']]
+]);
+
+//日志接口
+Route::group('log',[
+		'logInfo'			=> ['admin/log/logInfo'					, ['method' => 'get' ]],
+]);
 
 //用户等级
 Route::group('r',[
