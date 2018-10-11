@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui后台管理模板 2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="__STATIC__/admin/css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form" style="width:80%;" id="user_save">
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">登录名</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input userName" name="nickname" lay-verify="required" placeholder="请输入登录名">
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">邮箱</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input userEmail" name="email" lay-verify="email" placeholder="请输入邮箱">
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">密码</label>
+		<div class="layui-input-block">
+			<input type="password" class="layui-input userPassword" id="pwd" name="password" lay-verify="required" placeholder="请输入密码">
+		</div>
+	</div>
+
+	<div class="layui-row">
+		<div class="magb15 layui-col-md4 layui-col-xs12">
+			<label class="layui-form-label">性别</label>
+			<div class="layui-input-block userSex">
+				<input type="radio" name="sex" value="1" title="男" checked>
+				<input type="radio" name="sex" value="0" title="女">
+				<input type="radio" name="sex" value="2" title="保密">
+			</div>
+		</div>
+
+
+
+
+
+		<div class="magb15 layui-col-md4 layui-col-xs12">
+			<label class="layui-form-label">会员等级</label>
+			<div class="layui-input-block">
+				<select name="group_id" class="userGrade" lay-filter="userGrade">
+					{{$option}}
+				</select>
+			</div>
+		</div>
+		<div class="magb15 layui-col-md4 layui-col-xs12">
+			<label class="layui-form-label">会员状态</label>
+			<div class="layui-input-block">
+				<select name="status" class="userStatus" lay-filter="userStatus">
+					<option value="1">正常使用</option>
+					<option value="0">限制用户</option>
+				</select>
+			</div>
+		</div>
+
+
+		<div class="magb15 layui-col-md4 layui-col-xs12">
+			<label class="layui-form-label">用户头像</label>
+				<input type="button" class="layui-btn" id="user_img" onclick="document.getElementById('user_img_file').click();"  value="选择头像">
+				<input type="file" name="file" id="user_img_file" style="display: none">
+				<div class="layui-upload-list">
+				    <img class="layui-input-block" style="display: none" id="demo1" >
+				    <p class="layui-input-block" id="demoText"></p>
+				</div>
+		</div>
+
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">用户简介</label>
+		<div class="layui-input-block">
+			<textarea placeholder="请输入用户简介" name="userinfo" class="layui-textarea userDesc"></textarea>
+		</div>
+	</div>
+
+
+
+
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<div class="layui-input-block">
+			<button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="addUser" id="edit_add">立即提交</button>
+			<button type="reset" class="layui-btn layui-btn-sm layui-btn-primary">取消</button>
+		</div>
+	</div>
+	<input type="hidden" name="id"  value="0">
+</form>
+<script type="text/javascript" src="__STATIC__/admin/layui/layui.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/page/authuser/userAdd.js"></script>
+<!-- <script type="text/javascript" src="__STATIC__/admin/page/user/user_img.js"></script> -->
+</body>
+</html>

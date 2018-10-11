@@ -25,7 +25,7 @@ use think\Route;
 
 //后台管理模块登录
 Route::rule('login_admin','admin/login/login');
-
+//管理员登录
 Route::Group('l',[
 	'login_validate' => ['admin/login/loginValidate' , ['method'=>'post']]
 ]);
@@ -38,7 +38,6 @@ Route::group('a',[
 		'image'		 => ['admin/image/index' 	 ,  ['method' => 'get' ]],
 		'error'		 => ['admin/error/index'	 ,  ['method' => 'get' ]],
 		'navList'	 => ['admin/admin/navList'	 ,  ['method' => 'get' ]],
-		'getParam'	 => ['admin/admin/getParam'	 ,  ['method' => 'get' ]],
 ]);
 
 
@@ -51,6 +50,18 @@ Route::group('u',[
 		'addSave'	 => ['admin/user/userSave'	 ,  ['method' => 'post']],
         'delete'     => ['admin/user/delete'     ,  ['method' => 'get' ]   , ['id'=>'\d+']],
         'ajaxStatus' => ['admin/user/ajaxStatus' ,  ['method' => 'post']],
+]);
+
+//管理员模块
+Route::group('au',[
+		'index'		 => ['admin/authuser/index'      ,  ['method' => 'get' ]],
+		'indexinfo'  => ['admin/authuser/indexinfo'  ,  ['method' => 'get' ]],
+		'addUser'	 => ['admin/authuser/addUser'	 ,  ['method' => 'get' ]],
+		'addSave'	 => ['admin/authuser/userSave'	 ,  ['method' => 'post']],
+        'delete'     => ['admin/authuser/delete'     ,  ['method' => 'get' ]   , ['id'=>'\d+']],
+        'ajaxStatus' => ['admin/authuser/ajaxStatus' ,  ['method' => 'post']],
+        'getAuthUser'=> ['admin/authuser/getAuthUser',  ['method' => 'get' ]   , ['type'=>'\d+']],
+        'adminInfo'	 => ['admin/authuser/adminInfo'	 ,	['method' => 'get' ]],
 ]);
 
 
@@ -101,4 +112,38 @@ Route::group('h',[
 		'one'		 => ['admin/helper/one'		 ,	['method' => 'get' ]],
 		'two'		 => ['admin/helper/two'		 ,  ['method' => 'get' ]],
 		'three'		 => ['admin/helper/three' 	 ,  ['method' => 'get' ]],
+]);
+
+
+
+
+
+
+
+//电影分类
+Route::group('video',[
+        'index'         => ['admin/videotype/index'     ,['method' => 'get' ]],
+        'typeindex'     => ['admin/videotype/typeindex' ,['method' => 'get' ]],
+        'ajaxStatus'	=> ['admin/videotype/ajaxStatus',['method' => 'post']],
+        'sortEdit'		=> ['admin/videotype/sortEdit'  ,['method' => 'post']],
+        'addSave'		=> ['admin/videotype/addSave'   ,['method' => 'post']],
+        'delete'		=> ['admin/videotype/delete'	,['method' => 'get' ]],
+]);
+
+
+//电影列表
+Route::group('videos',[
+	'index'				=> ['admin/video/index'			,['method' => 'get' ]],
+	'videoList'			=> ['admin/video/videoList'		,['method' => 'get' ]],
+	'videoAdd'			=> ['admin/video/videoAdd'		,['method' => 'get' ]],
+	'addSave'			=> ['admin/video/addSave'		,['method' => 'post']],
+	'delete'     		=> ['admin/video/delete'   	  	,['method' => 'get' ]   , ['id'=>'\d+']],
+	'topStatus'			=> ['admin/video/topStatus'		,['method' => 'post']],
+]);
+
+
+
+Route::group('VIDEO',[
+		'VI_IN/:id'			=> ['index/index/videoInfo'		,['method' => 'get' ] , ['id' => '\d+']],
+		'player/:id'		=> ['index/index/player'		,['method' => 'get' ] , ['id' => '\d+']],
 ]);

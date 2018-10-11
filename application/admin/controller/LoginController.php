@@ -1,6 +1,6 @@
 <?php
 namespace app\admin\controller;
-use app\admin\model\User;
+use app\admin\model\AuthUser;
 use think\Controller;
 use think\Request;
 
@@ -23,7 +23,7 @@ class LoginController extends Controller
         	$mes['sta'] = '1';
 
         }else{
-        	$obj = new User();
+        	$obj = new AuthUser();
         	$where['nickname'] = ['=',$data['nickname']];
         	$where['password'] = ['=',md5($data['password'])];
         	$result = $obj->where($where)->find();

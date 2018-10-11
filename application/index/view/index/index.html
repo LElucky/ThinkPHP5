@@ -1,0 +1,28 @@
+    {include file="public/header" /}
+</div><div class="container">
+<div class="row" style="padding:0px 7px 0 7px;">
+    <div class="col-md-12 movie-item-out">
+        <span><a target="_blank" href="/type/1.html" title="电影">更多电影>>></a></span>
+        <h3 style="padding-left:10px;border-left:8px solid #00A6DE;">最新电影：</h3>
+    </div>
+    {volist name="data" id="item_1"}
+        <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+        <div class="movie-item">
+            <a style="position:relative;display:block;" title="{$item_1['title']}" target="_blank" href="{:url('/VIDEO/VI_IN/'.$item_1['id'])}">
+                <img class="indexhot" title="{$item_1['title']}" alt="{$item_1['title']}" src="__STATIC__/admin/video_img/{$item_1['image']}">
+                <button class="hdtag">高清国语</button>
+            </a>
+            <div class="meta">
+                <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="{$item_1['title']}" class="movie-name" href="{:url('/VIDEO/VI_IN/'.$item_1['id'])}">{$item_1['title']}</a></div>
+                <em>添加时间：<strong><span style="color:#FF0000;">{$item_1['online_time']}</span></strong></em>
+            </div>
+        </div>
+        </div>
+    {/volist}
+<!-- 分页 -->
+    {$data->render()}
+
+</div>
+<!-- <div><a target="_blank" class="btn btn-primary btn-block" href="/type/1.html"><i class="glyphicon glyphicon-fire"> </i> 更多热门电影 &raquo; </a></div> -->
+</div>
+{include file="public/footer" /}

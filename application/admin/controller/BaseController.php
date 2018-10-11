@@ -21,11 +21,12 @@ class BaseController extends Controller
                 $function   = $request->action();
                 $url        = $model.'/'.$controller.'/'.$function;
                 $data = json_decode(session('admin_user_info'),true);
-
+                
                 if(!$auth->check($url,$data['id'])){
-                        //echo json_encode(['msg'=>'没有权限']);
+//                        echo json_encode(['msg'=>'没有权限']);
+//                        exit;
                         
-                        //return $this->error('没有权限','/a/error');
+                        // return $this->error('没有权限','/login_admin');      
                 }else{
                         $obj = new LogController();
                         //监听所有请求链接
