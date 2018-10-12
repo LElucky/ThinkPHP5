@@ -33,13 +33,13 @@ class AuthUser extends Model
 
         // 钩子  修改数据库前如果选择了上传图片
         AuthUser::event('before_update', function ($data) {
-            if($data['id']){
+            $file = Request::instance()->file('file');
+            if($data['id'] != '0' && $file != false){
                 $OBJ = new AuthUser();
         //获取旧的图片 删掉
                 $user_img = $OBJ->field('user_img')->where('id',$data['id'])->value('user_img');
                 $user_img ? @unlink(AUTH_USER_UPLOADS_IMG.$user_img) : '' ;
             }
-            $file = Request::instance()->file('file');
             if($file){
                 $info = $file->validate(['ext'=>'jpg,png,jpeg,git','size'=>'200000000'])->move(AUTH_USER_UPLOADS_IMG);
                 if($info){

@@ -30,8 +30,8 @@
 		    <tbody>
 		    	<tr>
 		    		<td>网站名称</td>
-		    		<td><input type="text" class="layui-input cmsName" lay-verify="required" placeholder="请输入模版名称"></td>
-		    		<td pc>cmsName</td>
+		    		<td><input type="text" class="layui-input company" lay-verify="required" placeholder="网站名称"></td>
+		    		<td pc>company</td>
 		    	</tr>
 		    	<tr>
 		    		<td>当前版本</td>
@@ -44,14 +44,14 @@
 		    		<td pc>author</td>
 		    	</tr>
 		    	<tr>
-		    		<td>网站首页</td>
-		    		<td><input type="text" class="layui-input homePage" placeholder="请输入网站首页"></td>
-		    		<td pc>homePage</td>
+		    		<td>网站域名</td>
+		    		<td><input type="text" class="layui-input www" placeholder="请输入网站域名"></td>
+		    		<td pc>www</td>
 		    	</tr>
 		    	<tr>
 		    		<td>服务器环境</td>
-		    		<td><input type="text" class="layui-input server" placeholder="请输入服务器环境"></td>
-		    		<td pc>server</td>
+		    		<td><input type="text" class="layui-input system" placeholder="请输入服务器环境"></td>
+		    		<td pc>system</td>
 		    	</tr>
 		    	<tr>
 		    		<td>数据库版本</td>
@@ -60,28 +60,28 @@
 		    	</tr>
 		    	<tr>
 		    		<td>最大上传限制</td>
-		    		<td><input type="text" class="layui-input maxUpload" placeholder="请输入最大上传限制"></td>
-		    		<td pc>maxUpload</td>
+		    		<td><input type="text" class="layui-input" disabled placeholder="请输入最大上传限制" value="<?php echo ini_get('upload_max_filesize');?>"></td>
+		    		<td pc></td>
 		    	</tr>
 		    	<tr>
-		    		<td>用户权限</td>
-		    		<td><input type="text" class="layui-input userRights" placeholder="请输入当前用户权限"></td>
-		    		<td pc>userRights</td>
+		    		<td>默认网站TITLE</td>
+		    		<td><input type="text" class="layui-input webtitle" placeholder="请输入网站TITLE"></td>
+		    		<td pc>webtitle</td>
 		    	</tr>
 		    	<tr>
-		    		<td>默认关键字</td>
-		    		<td><input type="text" class="layui-input keywords" placeholder="请输入默认关键字"></td>
-		    		<td pc>keywords</td>
+		    		<td>默认网站KEYS</td>
+		    		<td><input type="text" class="layui-input webkeys" placeholder="请输入网站KEYS"></td>
+		    		<td pc>webkeys</td>
+		    	</tr>
+		    	<tr>
+		    		<td>默认网站DESC</td>
+		    		<td><input type="text" class="layui-input webdesc" placeholder="请输入网站DESC"></td>
+		    		<td pc>webdesc</td>
 		    	</tr>
 		    	<tr>
 		    		<td>版权信息</td>
 		    		<td><input type="text" class="layui-input powerby" placeholder="请输入网站版权信息"></td>
 		    		<td pc>powerby</td>
-		    	</tr>
-		    	<tr>
-		    		<td>网站描述</td>
-		    		<td><textarea placeholder="请输入网站描述" class="layui-textarea description"></textarea></td>
-		    		<td pc>description</td>
 		    	</tr>
 		    	<tr>
 		    		<td>网站备案号</td>

@@ -1,9 +1,10 @@
 <?php
 namespace app\index\controller;
 use think\Request;
-use think\Controller;
+
 use app\admin\model\VideoList;
-class IndexController extends Controller
+use app\admin\model\VideoType;
+class IndexController extends BaseController
 {
 	//首页
     public function index()
@@ -49,13 +50,15 @@ class IndexController extends Controller
             $where['title'] = ['like','%'.$data['title'].'%'];
         }
 
-        $data_INFO = $obj->where($where)->order('id','asc')->paginate(18,false,['query'=>request()->param()]);
-        foreach ($data_INFO as $key => $value) {
-            if(substr($value['image'],0,'1') == '_'){
-                $str = 'v'.$value['image'];
-                VideoList::update(['id'=>$value['id'],'image'=>$str]);
-            }
-        }
+        $data_INFO = $obj->where($where)->order('top desc,update_time desc')->paginate(18,false,['query'=>request()->param()]);
+
+
+        // foreach ($data_INFO as $key => $value) {
+        //     if(substr($value['image'],0,'1') == '_'){
+        //         $str = 'v'.$value['image'];
+        //         VideoList::update(['id'=>$value['id'],'image'=>$str]);
+        //     }   
+        // }
         $this->assign(['data' => $data_INFO]);
         return $this->fetch();
 
@@ -66,18 +69,64 @@ class IndexController extends Controller
     //电影详情页
     public function videoInfo($id)
     {
+
+        $obj = new VideoList();
+
     	$info = VideoList::get($id);
-    	$this->assign(['info' => $info]);
+
+        //侧边
+        $where['status'] = ['=','2'];
+        $where['top']    = ['=','1'];
+        $six = $obj->where($where)->order('update_time','desc')->limit(6)->select();
+
+        //备用地址
+        $obj_type = new VideoType();
+        $back_url = $obj_type->where('status','1')->order('sort','desc')->limit(5)->select();
+
+    	$this->assign(['info' => $info,'six' => $six, 'back_url' => $back_url]);
     	return $this->fetch();
     }
 
     //播放页面
-    public function player($id)
+    public function player()
     {
-    	$info = VideoList::get($id);
-    	$obj = new VideoList();
-    	$news_video = $obj->order('id','desc')->limit(12)->select();
-    	$this->assign(['info' => $info,'news_video'=>$news_video]);
+        $api_obj = new VideoType();
+        $url = Request()->path();
+        $arr = explode('/', $url);
+        //id = 视频id
+        //type = 视频前缀api  id
+        if(count($arr) == '3'){
+            $id = $arr['2'];
+            $api_url = $api_obj->field('id,url')->where('status','1')->order('sort','desc')->find();
+        }elseif(count($arr) == '4'){
+            $id = $arr['2'];
+            $api_url = $api_obj->field('id,url')->where('id',$arr['3'])->where('status','1')->find();
+        }
+
+        //备用地址
+        $obj_type = new VideoType();
+        $back_url = $obj_type->where('status','1')->order('sort','desc')->limit(5)->select();
+
+
+        $info = VideoList::get($id);
+        $obj = new VideoList();
+                //侧边
+        $where['status'] = ['=','2'];
+        $where['top']    = ['=','1'];
+        $news_video = $obj->where($where)->order('update_time','desc')->limit(12)->select();
+
+        //seo优化
+        $web_info = [];
+        $web_info['webtitle'] = $info['webtitle'];
+        $web_info['webdesc']  = substr($info['webdesc'],0);
+        $web_info['webkeys']  = $web_info['webdesc']; 
+        $this->assign([
+            'info'       => $info,
+            'news_video' =>$news_video,
+            'api_url'    =>$api_url,
+            'back_url'   => $back_url,
+            'web_info'   =>$web_info
+        ]);
     	return $this->fetch();
     }
 }

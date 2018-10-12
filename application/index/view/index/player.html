@@ -4,13 +4,16 @@
     <div class="container-fluid" style="padding-top:15px;background:#FFF;position:relative">
         <h3 class="movie-title">视频名称：{$info['title']}</h3>
       <div class="player" id="player">
-<iframe border="0" frameborder="0" height="460" marginheight="0" marginwidth="0" scrolling="no" src="http://jx.618g.com/?url={$info['url']}" width="100%" allowfullscreen="true" allowtransparency="true"></iframe></div>
+<iframe border="0" frameborder="0" height="460" marginheight="0" marginwidth="0" scrolling="no" src="{$api_url['url']}{$info['url']}" width="100%" allowfullscreen="true" allowtransparency="true"></iframe></div>
    
 <div class="col-md-12">
 <div class="panel panel-default resource-list">
 <div class="panel-heading"><strong>{$info['title']} - 1.在线视频 (支持手机)高清资源 - 在线播放 - 如果不能播放先刷新试试：</strong></div>
 <ul class="dslist-group">
-<li class="dslist-group-item on"><a href="/play/46694/1/1.html">清晰无字幕</a> </li></ul> 
+{volist name="back_url" id="url_item"}
+    <li class="dslist-group-item on"> <a href="{:url('/VIDEO/player/'.$info['id'].'/'.$url_item['id'])}">播放地址{$key+1}</a>  </li>
+{/volist}
+</ul> 
     <div class="panel-footer resource-help" style="clear: both;">
     <strong>{$info['title']} - 资源观看帮助：</strong><br>
     1、有个别电影打开后播放需要等待。<br>
@@ -23,7 +26,7 @@
     </div>
 	<div class="row" style="padding:10px 7px 0px 7px;">
     <div class="col-md-12 movie-item-out">
-	    <span><a target="_blank" href="/type/1.html" title="电影">更多电影>>></a></span>
+	    <span><a target="_blank" href="/" title="电影">更多电影>>></a></span>
         <h3 style="padding-left:10px;border-left:8px solid #00A6DE;">最新电影：</h3>
     </div>
 	{volist name="news_video" id="item_news"}

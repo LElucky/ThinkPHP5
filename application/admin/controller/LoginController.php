@@ -1,6 +1,8 @@
 <?php
 namespace app\admin\controller;
 use app\admin\model\AuthUser;
+use app\admin\model\AuthGroup;
+use app\admin\model\AuthGroupAccess;
 use think\Controller;
 use think\Request;
 
@@ -35,7 +37,10 @@ class LoginController extends Controller
 
         if($mes['sta'] == '0'){
             if($result['status'] ==1){
-                $admin_json_info = json_encode($result);
+                $uid = $result['id'];
+                $access = AuthGroupAccess::get(['uid'=>$uid]);
+                $result['user_group'] = AuthGroup::get(['id'=>$access['group_id']]);
+                $admin_json_info = $result;
                 session('admin_user_info',$admin_json_info);
             }else{
                 $mes['mes'] ='账号被限制';

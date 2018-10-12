@@ -62,6 +62,10 @@ Route::group('au',[
         'ajaxStatus' => ['admin/authuser/ajaxStatus' ,  ['method' => 'post']],
         'getAuthUser'=> ['admin/authuser/getAuthUser',  ['method' => 'get' ]   , ['type'=>'\d+']],
         'adminInfo'	 => ['admin/authuser/adminInfo'	 ,	['method' => 'get' ]],
+        'adminData'	 => ['admin/authuser/adminData'	 ,	['method' => 'get' ]],
+        'saveInfo'	 => ['admin/authuser/saveInfo'	 ,  ['method' => 'post']],
+        'changePwd'	 => ['admin/authuser/changePwd'	 ,  ['method' => 'get' ]],
+        'checkPwd'	 => ['admin/authuser/checkPwd'	 ,  ['method' => 'post']],
 ]);
 
 
@@ -101,6 +105,8 @@ Route::group('r',[
 //系统设置
 Route::group('s',[
 		'index'		 => ['admin/system/index'	 ,  ['method' => 'get' ]],
+		'indexInfo'	 => ['admin/system/indexInfo',  ['method' => 'get' ]],
+		'editInfo'	 => ['admin/system/editInfo' ,  ['mehotd' => 'get' ]],
 		'log'		 => ['admin/system/log'	     ,  ['method' => 'get' ]],
 		'friend'	 => ['admin/system/friend'	 ,  ['method' => 'get' ]],
 		'icons'		 => ['admin/system/icons'	 ,  ['method' => 'get' ]],
@@ -109,9 +115,10 @@ Route::group('s',[
 
 //使用文档
 Route::group('h',[
-		'one'		 => ['admin/helper/one'		 ,	['method' => 'get' ]],
-		'two'		 => ['admin/helper/two'		 ,  ['method' => 'get' ]],
-		'three'		 => ['admin/helper/three' 	 ,  ['method' => 'get' ]],
+		'one'		 => ['admin/helper/one'		  ,	 ['method' => 'get' ]],
+		'two'		 => ['admin/helper/two'		  ,  ['method' => 'get' ]],
+		'three'		 => ['admin/helper/three' 	  ,  ['method' => 'get' ]],
+		'clearCache' => ['admin/helper/clearCache',  ['method' => 'get' ]]
 ]);
 
 
@@ -145,5 +152,5 @@ Route::group('videos',[
 
 Route::group('VIDEO',[
 		'VI_IN/:id'			=> ['index/index/videoInfo'		,['method' => 'get' ] , ['id' => '\d+']],
-		'player/:id'		=> ['index/index/player'		,['method' => 'get' ] , ['id' => '\d+']],
+		'player'		=> ['index/index/player'		,['method' => 'get' ] , ['id' => '\d+']],
 ]);

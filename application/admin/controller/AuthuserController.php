@@ -142,12 +142,79 @@ class AuthuserController extends BaseController
     	echo json_encode($value);
     }
 
-    //登录当前管理员的信息
+
+
+    // 展示个人中心页面
     public function adminInfo()
     {
-    	$data = json_decode(session('admin_user_info'),true);
-    	var_dump($data);
+    	return $this->fetch();
     }
+
+    //个人中心登录当前管理员的信息
+    public function adminData()
+    {
+    	$data = json_decode(session('admin_user_info'),true);
+    	$datanews = AuthUser::get($data['id']);
+    	$datanews['user_group'] = AuthGroup::get($data['user_group']['id']);
+    	echo json_encode($datanews);
+    }
+
+    //个人中心保存修改
+   	public function saveInfo()
+   	{
+		$data = Request::instance()->param();
+        $uid = $data['id'];
+		$msg = '';
+		$msg  = AuthUser::update($data) ? '修改成功' : '修改失败';
+		//更新session
+		if($msg == '修改成功'){	
+			$session_data = json_decode(session('admin_user_info'),true);
+	    	$news_session = AuthUser::get($session_data['id']);
+	    	$news_session['user_group'] = AuthGroup::get($session_data['user_group']['id']);
+			session('admin_user_info',$news_session);
+		}
+		echo $msg;
+   	}
+
+   	// 修改密码
+   	public function changePwd()
+   	{
+   		return $this->fetch();
+   	}
+
+   	//修改密码验证
+   	public function checkPwd()
+   	{
+   		$data = Request::instance()->param();
+
+   		if($data['type'] == '1'):
+   			//验证密码
+	   		//取出来密码
+			$session_data = json_decode(session('admin_user_info'),true)['password'];
+	   		if(md5($data['pwd']) == $session_data):
+	   			// echo '密码正确';
+	   			echo '1';
+	   		else:
+	   			// echo '密码错误';
+	   			echo '0';
+	   		endif;
+	   	else:
+	   		//修改密码
+	   		$password = md5($data['pwd']);
+	   		$data['password'] = $password;
+	   		unset($data['pwd']);
+	   		unset($data['type']);
+	   		$msg= AuthUser::update($data) ? '修改成功' : '修改失败';
+	   		echo $msg;
+	   		// 更新session
+			$session_data = json_decode(session('admin_user_info'),true);
+	    	$news_session = AuthUser::get($session_data['id']);
+	    	$news_session['user_group'] = AuthGroup::get($session_data['user_group']['id']);
+	   		session('admin_user_info',$news_session);
+	   	endif;
+   	}
+
+
 
 }
 

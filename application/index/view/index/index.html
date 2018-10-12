@@ -1,8 +1,12 @@
-    {include file="public/header" /}
+{include file="public/header" /}
+<style type="text/css">
+    .pagination{
+        width:950px;
+    }
+</style>
 </div><div class="container">
 <div class="row" style="padding:0px 7px 0 7px;">
     <div class="col-md-12 movie-item-out">
-        <span><a target="_blank" href="/type/1.html" title="电影">更多电影>>></a></span>
         <h3 style="padding-left:10px;border-left:8px solid #00A6DE;">最新电影：</h3>
     </div>
     {volist name="data" id="item_1"}
@@ -23,6 +27,5 @@
     {$data->render()}
 
 </div>
-<!-- <div><a target="_blank" class="btn btn-primary btn-block" href="/type/1.html"><i class="glyphicon glyphicon-fire"> </i> 更多热门电影 &raquo; </a></div> -->
 </div>
 {include file="public/footer" /}

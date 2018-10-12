@@ -49,10 +49,7 @@
     <td class="span2"><span class="info-label">类型</span></td>
     <td>{$info['type']}</td>
 </tr>
-<!-- <tr>
-    <td class="span2"><span class="info-label">制片国家</span></td>
-    <td>中国大陆 / 日本</td>
-</tr> -->
+
 <tr>
     <td class="span2"><span class="info-label">更新状态</span></td>
     <td>高清国语</td>
@@ -79,37 +76,16 @@
                 <i class="glyphicon glyphicon-film"></i> 最新电影：
             </a>
 
-<a target="_blank" title="{$info['title']}(2013)" href="/show/10763.html" class="list-group-item">
-    {$info['title']}<em>(2013)</em>
+<a target="_blank" title="{$info['title']}" href="{:url('/VIDEO/VI_IN/'.$info['id'])}" class="list-group-item">
+    {$info['title']}<em></em>
 </a>
 
-<a target="_blank" title="跳跃生命线粤语(2018)" href="/show/46682.html" class="list-group-item">
-    跳跃生命线粤语<em>(2018)</em>
+{volist name="six" id="item_six"}
+<a target="_blank" title="{$item_six['title']}" href="{:url('/VIDEO/VI_IN/'.$item_six['id'])}" class="list-group-item">
+    {$item_six['title']}
 </a>
+{/volist}
 
-<a target="_blank" title="跳跃生命线国语(2018)" href="/show/46681.html" class="list-group-item">
-    跳跃生命线国语<em>(2018)</em>
-</a>
-
-<a target="_blank" title="彭湃(2018)" href="/show/46659.html" class="list-group-item">
-    彭湃<em>(2018)</em>
-</a>
-
-<a target="_blank" title="行尸走肉 第九季 The Walking Dead Season 9(2018)" href="/show/46680.html" class="list-group-item">
-    行尸走肉 第九季 The Walking Dead Season 9<em>(2018)</em>
-</a>
-
-<a target="_blank" title="队长小翼（足球小将）国语版(2018)" href="/show/41478.html" class="list-group-item">
-    队长小翼（足球小将）国语版<em>(2018)</em>
-</a>
-
-<a target="_blank" title="队长小翼（足球小将）日语版(2018)" href="/show/41479.html" class="list-group-item">
-    队长小翼（足球小将）日语版<em>(2018)</em>
-</a>
-
-<a target="_blank" title="毛丫丫被婚记(2016)" href="/show/46566.html" class="list-group-item">
-    毛丫丫被婚记<em>(2016)</em>
-</a>
   
 
 	</div>
@@ -119,7 +95,13 @@
 <div class="panel panel-default resource-list">
 <div class="panel-heading"><strong>《{$info['title']}》 - 1.在线视频 (支持手机)高清资源 - 在线播放 - 如果不能播放先刷新试试：</strong></div>
 <ul class="dslist-group">
-<li class="dslist-group-item"><a target="_blank" href="/play/10763/1/1.html">高清国语</a> </li><li class="dslist-group-item"><a target="_blank" href="/play/10763/1/2.html">备用</a> </li></ul> 
+    {volist name="back_url" id="url_item"}
+    <li class="dslist-group-item">
+        <a target="_blank" href="{:url('/VIDEO/player/'.$info['id'].'/'.$url_item['id'])}">播放地址{$key+1}</a> 
+    </li>
+    {/volist}
+    
+</ul> 
     <div class="panel-footer resource-help" style="clear: both;">
     <strong>《{$info['title']}》 - 资源观看帮助：</strong><br>
     1、有个别电影打开后播放需要等待。<br>

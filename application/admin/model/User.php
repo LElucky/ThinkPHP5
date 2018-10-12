@@ -33,9 +33,9 @@ class User extends Model
 
         // 钩子  修改数据库前如果选择了上传图片
         User::event('before_update', function ($data) {
-            if($data['id']){
+            if($data['id'] != '0'){
                 $OBJ = new User();
-        //获取旧的图片 删掉
+                //获取旧的图片 删掉
                 $user_img = $OBJ->field('user_img')->where('id',$data['id'])->value('user_img');
                 $user_img ? @unlink(USER_UPLOADS_IMG.$user_img) : '' ;
             }
