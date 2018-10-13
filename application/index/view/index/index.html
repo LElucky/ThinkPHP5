@@ -10,7 +10,7 @@
         <h3 style="padding-left:10px;border-left:8px solid #00A6DE;">最新电影：</h3>
     </div>
     {volist name="data" id="item_1"}
-        <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+        <div class="col-md-2 col-sm-4 col-xs-4 movie-item-out">
         <div class="movie-item">
             <a style="position:relative;display:block;" title="{$item_1['title']}" target="_blank" href="{:url('/VIDEO/VI_IN/'.$item_1['id'])}">
                 <img class="indexhot" title="{$item_1['title']}" alt="{$item_1['title']}" src="__STATIC__/admin/video_img/{$item_1['image']}">

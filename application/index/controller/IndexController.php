@@ -53,12 +53,13 @@ class IndexController extends BaseController
         $data_INFO = $obj->where($where)->order('top desc,update_time desc')->paginate(18,false,['query'=>request()->param()]);
 
 
-        // foreach ($data_INFO as $key => $value) {
-        //     if(substr($value['image'],0,'1') == '_'){
-        //         $str = 'v'.$value['image'];
-        //         VideoList::update(['id'=>$value['id'],'image'=>$str]);
-        //     }   
-        // }
+
+        foreach ($data_INFO as $key => $value) {
+            if(substr($value['image'],0,'1') == '_'){
+                $str = 'v'.$value['image'];
+                VideoList::update(['id'=>$value['id'],'image'=>$str]);
+            }   
+        }
         $this->assign(['data' => $data_INFO]);
         return $this->fetch();
 
@@ -128,5 +129,10 @@ class IndexController extends BaseController
             'web_info'   =>$web_info
         ]);
     	return $this->fetch();
+    }
+
+    public function error404()
+    {
+        return $this->fetch();
     }
 }

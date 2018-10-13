@@ -152,5 +152,8 @@ Route::group('videos',[
 
 Route::group('VIDEO',[
 		'VI_IN/:id'			=> ['index/index/videoInfo'		,['method' => 'get' ] , ['id' => '\d+']],
-		'player'		=> ['index/index/player'		,['method' => 'get' ] , ['id' => '\d+']],
+		'player'		    => ['index/index/player'		,['method' => 'get' ] , ['id' => '\d+']],
 ]);
+
+
+Route::rule('404','index/index/error404');
