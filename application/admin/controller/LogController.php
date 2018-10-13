@@ -45,7 +45,7 @@ class LogController extends Controller{
 		  $content = json_encode($res); 
 		 }
 		 //往日志文件内容后面追加日志内容 
-		 file_put_contents($filename, $content, FILE_APPEND); 
+		 // file_put_contents($filename, $content, FILE_APPEND); 
 
 		 //写入数据库
 		 Log::create($res);

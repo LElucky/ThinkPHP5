@@ -20,31 +20,27 @@ class BaseController extends Controller
                 $controller = $request->controller();
                 $function   = $request->action();
                 $url        = $model.'/'.$controller.'/'.$function;
-                // $data = json_decode(session('admin_user_info'),true);
+                $data = json_decode(session('admin_user_info'),true);
 
-            // $session_data = json_decode(session('admin_user_info'),true);
-            
-
-                // print_r($data);
-//                 if(!$auth->check($url,$data['id'])){
-// //                        echo json_encode(['msg'=>'没有权限']);
-// //                        exit;
+                if(!$auth->check($url,$data['id'])){
+                       // echo json_encode(['msg'=>'没有权限']);
+//                        exit;
                         
-//                         // return $this->error('没有权限','/login_admin');      
-//                 }else{
-//                         $obj = new LogController();
-//                         //监听所有请求链接
-//                         $str =  'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; 
-//                         $filename = './logs/'.date('Y-m',time()).'.json';
-//                         $method = $this->getMethod();
-//                         $type = $this->getType();
-//                         $user = $data['nickname'];
-//                         $code = $_SERVER['REDIRECT_STATUS'];
+                        // return $this->error('没有权限','/login_admin');      
+                }else{
+                        $obj = new LogController();
+                        //监听所有请求链接
+                        $str =  'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; 
+                        $filename = './logs/'.date('Y-m',time()).'.json';
+                        $method = $this->getMethod();
+                        $type = $this->getType();
+                        $user = $data['nickname'];
+                        $code = $_SERVER['REDIRECT_STATUS'];
 
 
-//                         $ip   = Request::instance()->ip();
-//                         $obj->writeLog($filename,$str,$type,$method,$user,$code,$ip);  
-//                 }
+                        $ip   = Request::instance()->ip();
+                        $obj->writeLog($filename,$str,$type,$method,$user,$code,$ip);  
+                }
 
 
         }

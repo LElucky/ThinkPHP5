@@ -49,5 +49,4 @@ function findCityByIp($ip){
 		 }
 		 //往日志文件内容后面追加日志内容 
 		 file_put_contents($filename, $content, FILE_APPEND); 
-		 cookie("$ip",$ip);
-} 
+	 } 
