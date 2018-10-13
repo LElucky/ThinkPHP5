@@ -2,6 +2,7 @@
 namespace app\admin\controller;
 use think\Request;
 use app\admin\model\VideoList;
+use think\Db;
 class VideoController extends BaseController
 {
 	// 电影列表页面
@@ -18,8 +19,21 @@ class VideoController extends BaseController
 
     	//条件
     	$where = [];
+    	$order = 'id desc';
     	if(isset($param['key'])){
-    		$where['title'] = ['like','%'.$param['key'].'%'];
+    		if($param['key']['title'] != ''){
+    			$where['title'] = ['like','%'.$param['key']['title'].'%'];
+    		}
+    		if($param['key']['id'] != ''){
+    			$where['id'] = ['=',$param['key']['id']];
+    		}
+    		if($param['key']['top'] != 'void'){
+    			$where['top'] = ['=',$param['key']['top']];	
+    		}
+    		if($param['key']['status'] != 'void'){
+    			$where['status'] = ['=',$param['key']['status']];
+    		}
+    		$order = $param['key']['field'].' '.$param['key']['order'];
     	}
 
     	//分页
@@ -29,8 +43,10 @@ class VideoController extends BaseController
 
         $data['code']  = 0;
         $data['msg']   = "";
-        $data['count'] = $obj->count();
-        $data['data'] = $obj->where($where)->order('id','desc')->limit($page,$limit)->select();
+        $data['count'] = $obj->where($where)->count();
+        $data['data'] = $obj->where($where)->order($order)->limit($page,$limit)->select();
+        // echo Db::name('video_list')->getLastSql();
+
         echo json_encode($data);
 	}
 
