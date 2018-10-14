@@ -10,7 +10,7 @@ use think\Request;
 class LoginController extends Controller
 {
 	public function login()
-	{
+	{  
 	    session('admin_user_info',null);
 		return $this->fetch();
 	}
