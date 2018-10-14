@@ -1,0 +1,140 @@
+{
+	"contentManagement": [
+		{
+			"title": "文章列表",
+			"icon": "icon-caidan",
+			"href": "/a/news.html",
+			"spread": false
+		},
+		{
+			"title": "图片管理",
+			"icon": "&#xe634;",
+			"href": "/a/image.html",
+			"spread": false
+		},
+		{
+			"title": "其他页面",
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "404页面",
+					"icon": "&#xe61c;",
+					"href": "error.html",
+					"spread": false
+				},
+				{
+					"title": "登录",
+					"icon": "&#xe609;",
+					"href": "/login_admin.html",
+					"spread": false,
+					"target": "_blank"
+				},
+				{
+					"title": "登录",
+					"icon": "&#xe609;",
+					"href": "/login_admin.html",
+					"spread": false,
+					"target": "_blank"
+				}
+			]
+		}
+	],
+	"memberCenter": [
+		{
+			"title": "用户中心",
+			"icon": "&#xe612;",
+			"href": "/u/index.html",
+			"spread": false
+		},
+		{
+			"title": "会员等级",
+			"icon": "icon-vip",
+			"href": "/r/index.html",
+			"spread": false
+		}
+	],
+	"systemeSttings": [
+		{
+			"title": "系统基本参数",
+			"icon": "&#xe631;",
+			"href": "/s/index.html",
+			"spread": false
+		},{
+			"title": "系统日志",
+			"icon": "icon-log",
+			"href": "/s/log.html",
+			"spread": false
+		},{
+			"title": "登录日志",
+			"icon": "icon-log",
+			"href": "/s/log.html",
+			"spread": false
+		},{
+			"title": "友情链接",
+			"icon": "&#xe64c;",
+			"href": "/s/friend.html",
+			"spread": false
+		},{
+			"title": "图标管理",
+			"icon": "&#xe857;",
+			"href": "/s/icons.html",
+			"spread": false
+		}
+	],
+	"seraphApi": [
+		{
+			"title": "三级联动模块",
+			"icon": "icon-mokuai",
+			"href": "/h/one.html",
+			"spread": false
+		},{
+			"title": "bodyTab模块",
+			"icon": "icon-mokuai",
+			"href": "/h/two.html",
+			"spread": false
+		},{
+			"title": "三级菜单",
+			"icon": "icon-mokuai",
+			"href": "/h/three.html",
+			"spread": false
+		}
+	],
+	"authController": [
+		{
+			"title": "AUTH规则",
+			"icon": "icon-text",
+			"href": "/auth/authRule.html",
+			"spread": false
+		},
+		{
+			"title": "AUTH组",
+			"icon": "&#xe634;",
+			"href": "/authg/authGroup.html",
+			"spread": false
+		},
+		{
+			"title": "关联信息",
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "404页面",
+					"icon": "&#xe61c;",
+					"href": "d.html",
+					"spread": false
+				},
+				{
+					"title": "登录",
+					"icon": "&#xe609;",
+					"href": "/d.html",
+					"spread": false,
+					"target": "_blank"
+				}
+			]
+		}
+	]
+
+}

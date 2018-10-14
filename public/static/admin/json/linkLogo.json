@@ -1,0 +1,15 @@
+{
+	"code": 0,
+	"msg": "",
+	"data": [
+		{
+			"src": "/static/admin/images/fly.png"
+		},{
+			"src": "/static/admin/images/git.png"
+		},{
+			"src": "/static/admin/images/layui.png"
+		},{
+			"src": "/static/admin/images/mayun.png"
+		}
+	]
+}
