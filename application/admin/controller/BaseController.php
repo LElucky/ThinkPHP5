@@ -25,9 +25,6 @@ class BaseController extends Controller
                 if(!$auth->check($url,$data['id'])){
                        // echo json_encode(['msg'=>'没有权限']);
 //                        exit;
-                    if($url == 'admin/Login/login'){
-                        ECHO 'ABC';exit;
-                    }
                         
                         // return $this->error('没有权限','/login_admin');      
                 }else{

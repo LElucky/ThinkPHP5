@@ -53,8 +53,6 @@ class IndexController extends BaseController
         $data_INFO = $obj->where($where)->order('top desc,update_time desc')->paginate(18,false,['query'=>request()->param()]);
 
 
-        // $data_INFO = $obj->where($where)->order('id desc')->paginate(200);
-
 
         foreach ($data_INFO as $key => $value) {
             if(substr($value['image'],0,'1') == '_'){
