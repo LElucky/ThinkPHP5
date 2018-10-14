@@ -23,7 +23,9 @@ class BaseController extends Controller
                 $data = json_decode(session('admin_user_info'),true);
 
                 if(!$auth->check($url,$data['id'])){
-
+                    // echo $url;
+                    // echo '没有权限';
+                    // exit;
                         // return $this->error('没有权限','/login_admin');      
                 }else{
                         $obj = new LogController();
