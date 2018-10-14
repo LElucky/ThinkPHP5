@@ -23,8 +23,8 @@ layui.use(['form','layer','jquery'],function(){
                     var data = JSON.parse(data)
                     layer.close(index)
                     layer.msg(data.code)
-            //刷新父页面
-            parent.location.reload();                   
+                    //刷新父页面
+                    parent.location.reload();                   
                 },
                 error:function(){
                     alert('系统异常')

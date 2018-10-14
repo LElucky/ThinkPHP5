@@ -92,7 +92,7 @@ class Auth
         'auth_group'        => 'auth_group', // 用户组数据表名
         'auth_group_access' => 'auth_group_access', // 用户-用户组关系表
         'auth_rule'         => 'auth_rule', // 权限规则表
-        'auth_user'         => 'admin', // 用户信息表
+        'auth_user'         => 'auth_user', // 用户信息表
     ];
  
     /**
@@ -168,6 +168,7 @@ class Auth
                 }
             }
         }
+        // PRINT_R($list);
         if ('or' == $relation && !empty($list)) {
             return true;
         }
