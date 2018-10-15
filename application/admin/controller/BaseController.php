@@ -24,6 +24,7 @@ class BaseController extends Controller
 
                 if(!$auth->check($url,$data['id'])){
                     echo $url;
+                    echo $data['id'];
                     exit;
                         // return $this->error('没有权限','/login_admin');      
                 }else{
